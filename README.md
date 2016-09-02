@@ -6,3 +6,4 @@ Esta es la segunda versión de este repositorio, la primera no cumplí con el si
 La idea es hacer borrón y cuenta nueva, tengo mis dudas con respecto a usar el sistema de tags tan estricto que me quise imponer o usar inicialmente uno que defina al proyecto de pruebas.
 
 - **ES6** - Pruebas de las nuevas funcionalidades de ES6 con Jasmine
+- **C_Meteor** - Curso [Introduction to Meteor.js Development](https://www.coursera.org/learn/meteor-development) de *Coursera*
