@@ -5,7 +5,8 @@ Images = new Mongo.Collection('images');
 
 
 // Enviamos la colección Images a la plantilla a través de un helper
-Template.images.helpers({ images: Images.find() });
+// Podemos dedicir el orden de ordenación
+Template.images.helpers({ images: Images.find({}, { sort: { rating: -1 } }) });
 
 /**
  * Agregada la clase js-image al listado de imágenes
@@ -25,5 +26,15 @@ Template.images.events({
     let imageId = this._id;
     console.log(imageId);
     $(`#${imageId}`).hide('slow', () => { Images.remove({ _id: imageId }); });
+  },
+  'click .js-rate-image': function (event) {
+    let rating = $(event.currentTarget).data('userrating');
+    console.log(rating);
+    let imageId = this.id;
+    console.log(imageId);
+
+    Images.update({ _id: imageId },
+      { $set: { rating } }
+    );
   },
 });
