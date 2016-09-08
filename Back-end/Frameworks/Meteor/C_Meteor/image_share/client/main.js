@@ -4,23 +4,22 @@ import './main.html';
 Images = new Mongo.Collection('images');
 
 
-// Enviamos la colección Images a la plantilla a través de un helper
-// Podemos dedicir el orden de ordenación
-Template.images.helpers({ images: Images.find({}, { sort: { rating: -1 } }) });
+// We send the Images collection to the template with the aid of a helper
+// We can choose the attribute to order the objects
+Template.images.helpers({ images: Images.find({}, { sort: { createdOn: -1, rating: -1 } }) });
 
 /**
- * Agregada la clase js-image al listado de imágenes
- * No tiene finalidad estética sino usarla para añadir interactividad
- * Al pulsar en la imagen cambiará el tamaño a 50px
+ * We add class js-XX
+ * This type of classes are not to add css, we use thems for behavior
  */
 Template.images.events({
   'click .js-image': (event) => {
     $(event.target).css('width', '50px');
   },
   /**
-   * Para que funcione tenemos que usar la definición antigua de function
-   * this: Objeto de la imagen
-   * this (=>): windows
+   * We can't use the arrow function here because this is different
+   * this: Image`s object
+   * this (=>): windows`s object
    */
   'click .js-del-image': function (event) {
     let imageId = this._id;
@@ -36,5 +35,26 @@ Template.images.events({
     Images.update({ _id: imageId },
       { $set: { rating } }
     );
+  },
+  'click .js-show-image-form': function (event) {
+    $('#image_add_form').modal('show');
+  },
+});
+
+Template.image_add_form.events({
+  'submit .js-add-image': function (event) {
+    let imgSrc = event.target.img_src.value;
+    let imgAlt = event.target.img_alt.value;
+    console.log(`src: ${imgSrc}, alt: ${imgAlt}`);
+
+    Images.insert({
+      img_src: imgSrc,
+      img_alt: imgAlt,
+      createdOn: new Date(),
+    });
+    // We close the modal
+    $('#image_add_form').modal('hide');
+    // We need to add return false to cancel the default event (reload the page)
+    return false;
   },
 });

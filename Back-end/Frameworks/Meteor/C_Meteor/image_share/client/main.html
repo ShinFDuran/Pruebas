@@ -3,6 +3,7 @@
 </head>
 
 <body>
+      {{> image_add_form}}
   <div class="container">
     <div class="jumbotron">
       <h1>Image Share <br> <small>Coursera - Introduction to Meteor.js Development</small></h1>
@@ -13,7 +14,32 @@
   </div>
 </body>
 
+<template name="image_add_form">
+  <div class="modal fade" id="image_add_form">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="js-add-image">
+          <div class="modal-header">
+            <div class="modal-title">Add Image</div>
+          </div>
+          <div class="modal-body">
+              <label for="img_src">Src:</label>
+              <input type="text" name="img_src" /><br />
+              <label for="img_alt">Alt:</label>
+              <input type="text" name="img_alt" />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success">Save</button>
+            <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>    
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="images">
+  <button class="btn btn-success js-show-image-form">Add image</button>
 	<div class="row">    
   {{#each images}}
     <div class="col-xs-12 col-md-3" id={{_id}}>
