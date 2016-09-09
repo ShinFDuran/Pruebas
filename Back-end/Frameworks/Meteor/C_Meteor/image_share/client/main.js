@@ -3,10 +3,24 @@ import './main.html';
 
 Images = new Mongo.Collection('images');
 
+// ****** Helpers
 
-// We send the Images collection to the template with the aid of a helper
-// We can choose the attribute to order the objects
+/**
+ * We send the Images collection to the template with the aid of a helper
+ * We can choose the attribute to order the objects
+ */
 Template.images.helpers({ images: Images.find({}, { sort: { createdOn: -1, rating: -1 } }) });
+
+// Helper of the user data
+Template.body.helpers({ username: () => {
+  if (Meteor.user()) {
+    return Meteor.user().emails[0].address;
+  } else {
+    return 'no one';
+  }
+} });
+
+// ****** Events
 
 /**
  * We add class js-XX

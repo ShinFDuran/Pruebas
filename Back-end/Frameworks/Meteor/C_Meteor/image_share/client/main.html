@@ -19,6 +19,10 @@
     <div class="jumbotron">
       <h1>Image Share <br> <small>Coursera - Introduction to Meteor.js Development</small></h1>
     </div>
+
+    <!-- Main content: User data -->
+    <p>Hello {{username}}</p>
+
     <!-- Main content: Image list -->
     {{> images}}
   </div>
@@ -53,7 +57,9 @@
 
 <!-- Template: List of images with an "Add Image" button on top -->
 <template name="images">
-  <button class="btn btn-success js-show-image-form">Add image</button>
+  {{#if currentUser}}
+    <button class="btn btn-success js-show-image-form">Add image</button>
+  {{/if}}
 	<div class="row">    
   {{#each images}}
     <div class="col-xs-12 col-md-3" id={{_id}}>
