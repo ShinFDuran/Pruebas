@@ -67,7 +67,9 @@
         <img  class="js-image thumbnail-img" src="{{img_src}}"	alt="{{img_alt}}"/>          
         <div class="caption">
             <h3>{{img_alt}}</h3>
-            <p>User: {{getUser createdBy}}</p>
+            <p>User:
+              <a href="#" class="js-set-image-filter">{{getUser createdBy}}</a> 
+            </p>
             <p>
               {{>starsRating mutable=true id=_id rating=rating class="js-rate-image"}}
             </p>

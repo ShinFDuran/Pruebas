@@ -16,7 +16,15 @@ Accounts.ui.config({
  * We can choose the attribute to order the objects
  */
 Template.images.helpers({
-  images: Images.find({}, { sort: { createdOn: -1, rating: -1 } }),
+  images: () => {
+    if (Session.get('userFilter')) {
+      return Images.find(
+        { createdBy: Session.get('userFilter') },
+        { sort: { createdOn: -1, rating: -1 } }
+      );
+    }
+    return Images.find({}, { sort: { createdOn: -1, rating: -1 } });
+  },
   getUser: userId => {
     // We need to get from the collection the user
     const user = Meteor.users.findOne({ _id: userId });
@@ -71,6 +79,9 @@ Template.images.events({
   },
   'click .js-show-image-form': function (event) {
     $('#image_add_form').modal('show');
+  },
+  'click .js-set-image-filter': function (event) {
+    Session.set('userFilter', this.createdBy);
   },
 });
 
