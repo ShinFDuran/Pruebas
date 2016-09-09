@@ -1,7 +1,13 @@
 import { Template } from 'meteor/templating';
 import './main.html';
 
+// Collection with the images
 Images = new Mongo.Collection('images');
+
+// Configuration of the registration form
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_AND_EMAIL',
+});
 
 // ****** Helpers
 
@@ -14,7 +20,7 @@ Template.images.helpers({ images: Images.find({}, { sort: { createdOn: -1, ratin
 // Helper of the user data
 Template.body.helpers({ username: () => {
   if (Meteor.user()) {
-    return Meteor.user().emails[0].address;
+    return Meteor.user().username;
   } else {
     return 'no one';
   }
