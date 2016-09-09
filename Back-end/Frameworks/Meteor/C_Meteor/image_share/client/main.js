@@ -15,16 +15,29 @@ Accounts.ui.config({
  * We send the Images collection to the template with the aid of a helper
  * We can choose the attribute to order the objects
  */
-Template.images.helpers({ images: Images.find({}, { sort: { createdOn: -1, rating: -1 } }) });
+Template.images.helpers({
+  images: Images.find({}, { sort: { createdOn: -1, rating: -1 } }),
+  getUser: userId => {
+    // We need to get from the collection the user
+    const user = Meteor.users.findOne({ _id: userId });
+    // If user !== undefined returns the username
+    if (user) {
+      return user.username;
+    }
+    // If you can`t find in the collection return the default value
+    return 'No One';
+  },
+});
 
 // Helper of the user data
-Template.body.helpers({ username: () => {
-  if (Meteor.user()) {
-    return Meteor.user().username;
-  } else {
+Template.body.helpers({
+  username: () => {
+    if (Meteor.user()) {
+      return Meteor.user().username;
+    }
     return 'no one';
-  }
-} });
+  },
+});
 
 // ****** Events
 
@@ -67,11 +80,17 @@ Template.image_add_form.events({
     let imgAlt = event.target.img_alt.value;
     console.log(`src: ${imgSrc}, alt: ${imgAlt}`);
 
-    Images.insert({
-      img_src: imgSrc,
-      img_alt: imgAlt,
-      createdOn: new Date(),
-    });
+    if (Meteor.user()) {
+      // We check if we are logged
+      Images.insert({
+        img_src: imgSrc,
+        img_alt: imgAlt,
+        createdOn: new Date(),
+        createdBy: Meteor.user()._id,
+      });
+    }
+
+
     // We close the modal
     $('#image_add_form').modal('hide');
     // We need to add return false to cancel the default event (reload the page)
