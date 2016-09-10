@@ -35,6 +35,18 @@ Template.images.helpers({
     // If you can`t find in the collection return the default value
     return 'No One';
   },
+  getFilterUser: () => {
+    if (Session.get('userFilter')) {
+      /**
+       * First we search in the collection the user of the createdBy attribute
+       * We return the username (string) of that user (object)
+       */
+      return Meteor.users.findOne({ _id: Session.get('userFilter') }).username;
+    }
+    return false;
+  },
+  // This is similar to getFilterUser but using a ternary conditional
+  filtering_images: () => (Session.get('userFilter') ? true : false),
 });
 
 // Helper of the user data
@@ -82,6 +94,9 @@ Template.images.events({
   },
   'click .js-set-image-filter': function (event) {
     Session.set('userFilter', this.createdBy);
+  },
+  'click .js-unset-image-filter': function (event) {
+    Session.set('userFilter', undefined);
   },
 });
 
