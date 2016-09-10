@@ -4,6 +4,24 @@ import './main.html';
 // Collection with the images
 Images = new Mongo.Collection('images');
 
+// Infinite Scroll
+Session.set('imageLimit', 8);
+let lastScrollTop = 0;
+$(window).scroll(function(event) {
+  console.log('Scroll');
+  // test if we are near the bottom of the window
+  if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    // where are we in the page? 
+    let scrollTop = $(this).scrollTop();
+    // test if we are going down
+    if (scrollTop > lastScrollTop) {
+      // yes we are heading down...
+      Session.set('imageLimit', Session.get('imageLimit') + 4);
+    }
+    lastScrollTop = scrollTop;
+  }
+});
+
 // Configuration of the registration form
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_AND_EMAIL',
@@ -23,7 +41,10 @@ Template.images.helpers({
         { sort: { createdOn: -1, rating: -1 } }
       );
     }
-    return Images.find({}, { sort: { createdOn: -1, rating: -1 } });
+    return Images.find({}, {
+      sort: { createdOn: -1, rating: -1 },
+      limit: Session.get('imageLimit'),
+    });
   },
   getUser: userId => {
     // We need to get from the collection the user
