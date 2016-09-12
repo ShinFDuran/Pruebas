@@ -10,3 +10,7 @@ body{
     /* We need to solve the fixed navbar problem */
     padding-top: 60px;
 }
+
+.single-img{
+	max-width:100%;
+}

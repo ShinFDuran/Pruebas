@@ -1,8 +1,39 @@
 import { Template } from 'meteor/templating';
 import './main.html';
 
-// Collection with the images
-Images = new Mongo.Collection('images');
+// Routes
+// Default layout
+Router.configure({
+  layoutTemplate: 'ApplicationLayout',
+});
+
+Router.route('/', function () {
+  this.render('welcome', {
+    to: 'main',
+  });
+});
+
+Router.route('/images', function () {
+  this.render('navbar', {
+    to: 'navbar',
+  });
+  this.render('images', {
+    to: 'main',
+  });
+});
+
+Router.route('/image/:_id', function () {
+  this.render('navbar', {
+    to: 'navbar',
+  });
+  this.render('image', {
+    to: 'main', 
+    data: function() {
+      return Images.findOne({ _id: this.params._id });
+    },
+  });
+});
+
 
 // Infinite Scroll
 Session.set('imageLimit', 8);
@@ -71,7 +102,7 @@ Template.images.helpers({
 });
 
 // Helper of the user data
-Template.body.helpers({
+Template.welcome.helpers({
   username: () => {
     if (Meteor.user()) {
       return Meteor.user().username;
