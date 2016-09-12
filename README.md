@@ -7,4 +7,5 @@ La idea es hacer borrón y cuenta nueva, tengo mis dudas con respecto a usar el 
 
 - **ES6** - Pruebas de las nuevas funcionalidades de ES6 con Jasmine
 - **C_Meteor** - Curso [Introduction to Meteor.js Development](https://www.coursera.org/learn/meteor-development) de *Coursera*
+- **C_Meteor2** - Curso [Web Application Development with JavaScript and MongoDB](https://www.coursera.org/learn/web-application-development/) de *Coursera*
 - **C_Angular** - Curso [Front-End JavaScript Frameworks: AngularJS](https://www.coursera.org/learn/angular-js) de *Coursera*
