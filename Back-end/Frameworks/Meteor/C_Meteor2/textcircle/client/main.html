@@ -3,19 +3,23 @@
 </head>
 
 <body>
-  <h1>Welcome to TextCircle!</h1>
-  {{> date_display}}
-
-  {{> editor}}
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="#" class="navbar-brand">TextCircle</a>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to TextCircle!</h1>
+    </div>
+  </div>
+  <div class="container">
+    {{> editor}}
+  </div>  
 </body>
 
 
 <!-- Templates -->
-<!-- Template: Date display that show us current date -->
-<template name="date_display">
-  {{current_date}}
-</template>
-
 <!-- Template: Document editor -->
 <template name="editor">
   {{>sharejsCM docid=docid id="editor"}}
