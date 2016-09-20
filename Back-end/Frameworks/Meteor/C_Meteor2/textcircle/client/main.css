@@ -2,3 +2,9 @@
 body{
   padding-top: 75px;
 }
+
+#viewer_iframe{
+	border:1px solid gray;
+	resize:both;
+	width:100%;
+}

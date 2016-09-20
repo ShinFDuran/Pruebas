@@ -3,18 +3,28 @@
 </head>
 
 <body>
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <a href="#" class="navbar-brand">TextCircle</a>
       <p class="navbar-text navbar-right">{{> loginButtons align="right"}}</p>      
     </div>
   </nav>
+  <!-- Header -->
   <div class="container">
     <div class="jumbotron">
       <h1>Welcome to TextCircle!</h1>
     </div>
   </div>
+  <!-- Body content -->
   <div class="container">
+    <!-- Body content: Editing User list -->
+    <div class="row">
+      <div class="col-md-12">
+        {{> editingUsers}}
+      </div>
+    </div>
+    <!-- Body content: Editor/Viewer -->
     <div class="row">
       <div class="col-xs-12 col-md-6">
         {{> editor}}
@@ -28,9 +38,17 @@
 
 
 <!-- Templates -->
+<!-- Template: Editing Users List -->
+<template name="editingUsers"> 
+  Editors:
+  {{#each users}}
+    <span class="label label-success">{{firstname}}</span>   
+  {{/each}}
+</template>
+
 <!-- Template: Document editor -->
 <template name="editor">
-  {{>sharejsCM docid=docid onRender=config id="editor"}}
+  {{>sharejsCM docid=docid onRender=config id="editor" mode="javascript"}}
 </template>
 
 <!-- Template: Document Viewer -->
