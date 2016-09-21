@@ -9,3 +9,4 @@ La idea es hacer borrón y cuenta nueva, tengo mis dudas con respecto a usar el 
 - **C_Meteor** - Curso [Introduction to Meteor.js Development](https://www.coursera.org/learn/meteor-development) de *Coursera*
 - **C_Meteor2** - Curso [Web Application Development with JavaScript and MongoDB](https://www.coursera.org/learn/web-application-development/) de *Coursera*
 - **C_Angular** - Curso [Front-End JavaScript Frameworks: AngularJS](https://www.coursera.org/learn/angular-js) de *Coursera*
+- **EDX_MEAN** - Curso [Introduction to MongoDB using the MEAN Stack](https://www.edx.org/course/introduction-mongodb-using-mean-stack-mongodbx-m101x-0) de *edX*
