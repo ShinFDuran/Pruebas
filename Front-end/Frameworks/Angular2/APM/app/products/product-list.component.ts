@@ -1,11 +1,12 @@
 import { Component, OnInit } from 'angular2/core';
 
-
 import { IProduct } from './product';
+import { ProductFilterPipe } from './product-filter.pipe';
 
 @Component({
   selector: 'pm-products',
   templateUrl: 'app/products/product-list.component.html',
+  pipes: [ProductFilterPipe],
 })
 
 export class ProductListComponent implements OnInit {
