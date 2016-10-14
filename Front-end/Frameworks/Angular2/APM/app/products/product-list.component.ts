@@ -7,6 +7,7 @@ import { Component } from 'angular2/core';
 
 export class ProductListComponent {
   pageTitle: string = 'Product List';
+  listFilter: string = '';
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
