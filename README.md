@@ -11,3 +11,4 @@ La idea es hacer borrón y cuenta nueva, tengo mis dudas con respecto a usar el 
 - **C_Angular** - Curso [Front-End JavaScript Frameworks: AngularJS](https://www.coursera.org/learn/angular-js) de *Coursera*
 - **EDX_MEAN** - Curso [Introduction to MongoDB using the MEAN Stack](https://www.edx.org/course/introduction-mongodb-using-mean-stack-mongodbx-m101x-0) de *edX*
 - **A2_APM** - Tutorial [Angular 2: Getting Started](https://www.pluralsight.com/courses/angular-2-getting-started) de *PluralSight*
+- **A2_SS** - Tutorial [Getting Started with Angular 2](https://school.scotch.io/getting-started-with-angular-2/) de *Scotch School*
