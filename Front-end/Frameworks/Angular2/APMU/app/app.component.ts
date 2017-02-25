@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     // View layout of the component. Can be a link to a external html
     template: `
         <div><h1>{{pageTitle}}</h1>
-            <h2>My first component</h2>
+            <h2><pm-products></pm-products></h2>
         </div>
     `
 })
