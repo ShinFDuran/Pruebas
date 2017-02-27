@@ -1,7 +1,12 @@
+<!-- *** Star Component *** -->
+<!-- To get the effect of the stars croped we need show only a part of the full view -->
+<!-- The croped image is controller for the starWidth property -->
 <div class="crop" 
     [style.width.px]="starWidth"
-    [title]="rating">
-    <div style="width: 86px">
+    [title]="rating"
+    (click)='onClick()'>
+    <!-- This is the full image: 5 stars -->
+    <div style="width: 186px">
         <span class="glyphicon glyphicon-star"></span>
         <span class="glyphicon glyphicon-star"></span>
         <span class="glyphicon glyphicon-star"></span>

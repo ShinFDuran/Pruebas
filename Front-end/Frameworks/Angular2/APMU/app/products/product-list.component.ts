@@ -49,4 +49,8 @@ export class ProductListComponent implements OnInit{
   toggleImage(): void{
     this.imagesActivated = !this.imagesActivated;
   }
+
+  onRatingClient(message: string): void{
+    console.log(message);
+  }
 }

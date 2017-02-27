@@ -48,7 +48,12 @@
             <td>{{product.productCode | lowercase}}</td>
             <td>{{product.releaseDate}}</td>
             <td>{{product.price | currency: 'USD' : true : '1.2-2' }}</td>
-            <td>{{product.starRating}}</td>
+            <td>
+              <!-- We use property binding in the star component directive -->
+              <!-- We need to subscribe us to our custom event -->
+              <ai-star [rating]='product.starRating'
+                (ratingClicked)='onRatingClient($event)'></ai-star>
+            </td>
           </tr>
         </tbody>
       </table>
