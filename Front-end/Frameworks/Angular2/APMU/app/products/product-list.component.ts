@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit{
   imagesActivated: boolean;
   listFilter: string;
   products: IProduct[];
+  errorMessage: string;
 
   // We need to inject the service in the constructor to use it. Shorthand version
   constructor(private _productService : ProductService){
@@ -31,7 +32,10 @@ export class ProductListComponent implements OnInit{
     this.imagesActivated = false;
     this.listFilter = '';
     // We use the service to get the list of products
-    this.products = this._productService.getProducts();
+    this._productService.getProducts()
+      .subscribe(
+        products => this.products = products,
+        error => this.errorMessage = <any>error);
   }
   toggleImage(): void{
     this.imagesActivated = !this.imagesActivated;
