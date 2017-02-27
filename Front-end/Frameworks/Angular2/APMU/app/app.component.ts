@@ -9,9 +9,20 @@ import { ProductService } from './products/product.service';
     // selector: Directive in html
     selector: 'pm-app',
     // View layout of the component. Can be a link to a external html
-    template: `
-        <div><h1>{{pageTitle}}</h1>
-            <h2><pm-products></pm-products></h2>
+    template: `       
+        <div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <a class="navbar-brand">{{pageTitle}}</a>
+                    <ul class="nav navbar-nav">
+                        <li> <a routerLink="/welcome">Home</a></li>
+                        <li> <a routerLink="/products">Product List</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     `,
     // We add the services in the providers property

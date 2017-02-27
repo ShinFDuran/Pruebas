@@ -19,8 +19,8 @@ export class StarComponent implements OnChanges {
   @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnChanges(): void {
-    // Full view 5 stars = 186px.  We use this formula to crop the display
-    this.starWidth = this.rating * 186/5;
+    // Full view 5 stars = 86px.  We use this formula to crop the display
+    this.starWidth = this.rating * 86/5;
   }
 
     // The click event o our nested component will trigger another event
