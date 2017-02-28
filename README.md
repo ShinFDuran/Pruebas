@@ -12,3 +12,4 @@ La idea es hacer borrón y cuenta nueva, tengo mis dudas con respecto a usar el 
 - **EDX_MEAN** - Curso [Introduction to MongoDB using the MEAN Stack](https://www.edx.org/course/introduction-mongodb-using-mean-stack-mongodbx-m101x-0) de *edX*
 - **A2_APM** - Tutorial [Angular 2: Getting Started](https://www.pluralsight.com/courses/angular-2-getting-started) de *PluralSight*
 - **A2_APMU** - Tutorial [Angular 2: Getting Started](https://www.pluralsight.com/courses/angular-2-getting-started-update) de *PluralSight*
+- **A_CWUAQ** - Tutorial [Code with Us: Angular Quick Start](https://www.pluralsight.com/courses/code-with-us-angular-quick-start) de *PluralSight*
