@@ -15,22 +15,4 @@
       <option>West</option>
     </select>
   </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <!-- Example of bindings and event binding -->
-      <fieldset>
-        <img [src]=image >
-      </fieldset>
-      <label [style.color]="color">Favorite Color</label>
-      <button (click)="clicked()">Toggle Color</button>
-
-      <!-- The target of the event change is the select element -->
-      <select (change)="colorChange($event.target.value)">
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Green</option>
-      </select>
-    </div>
-  </div>
 </div>
