@@ -1,18 +1,66 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>Hello {{name}}<br>
-      <small [hidden]='hideAdress' >From {{ city }}, {{ region }}</small>
-    </h1>
+<!-- Header of the page -->
+<header class="jumbotron">
+  <div class="container">
+    <h1>{{pageTitle}}</h1>
+    <p>{{pageDescription}}</p>
   </div>
+</header>
 
-  <!-- Lesson 2: Exercise -->
-  <div class="row">
-    <button class="btn btn-default" (click)="addressClick()">Show/Hide Adress</button>
-    <select (change)="regionChange($event.target.value)">
-      <option>East</option>
-      <option>North</option>
-      <option>South</option>
-      <option>West</option>
-    </select>
-  </div>
+<!-- Content of the page -->
+<div class="container">
+  <main class="form-horizontal">
+
+    <!-- Name -->
+    <div class="form-group">
+      <label for="inputName" class="col-sm-2 control-label">Name: </label>
+      <div class="col-sm-10">
+        <input class="form-control" id="inputName" [(ngModel)]='name' >
+      </div>
+    </div>
+
+    <!-- Street -->
+    <div class="form-group">
+      <label for="inputStreet" class="col-sm-2 control-label">Street: </label>
+      <div class="col-sm-10">
+        <input class="form-control" id="inputStreet" [(ngModel)]='street' >
+      </div>
+    </div>
+
+    <!-- City -->
+    <div class="form-group">
+      <label for="inputCity" class="col-sm-2 control-label">City: </label>
+      <div class="col-sm-10">
+        <input class="form-control" id="inputCity" [(ngModel)]='city' >
+      </div>
+    </div>
+
+    <!-- Zone -->
+    <div class="form-group">
+      <label for="inputRegion" class="col-sm-2 control-label">Region: </label>
+      <div class="col-sm-10">
+        <select  [(ngModel)]='region' class="form-control" id="inputRegion" >
+          <option>East</option>
+          <option>North</option>
+          <option>South</option>
+          <option>West</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Checkbox Show/Hide Info -->
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"  [(ngModel)]='hideAdress'> Show Info
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete information -->
+    <p [hidden]='!hideAdress' class="text-center">
+      <em>{{ name }} is in {{ street }} in {{ city }} in the {{ region }} region</em>
+    </p>
+  </main>  
 </div>

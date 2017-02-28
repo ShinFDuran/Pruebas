@@ -7,18 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  { 
   // Properties
+  pageTitle: string = 'Code Quickstart';
+  pageDescription: string = 'Example web page using Angular Quickstart';
   name: string = 'Batman'; 
-  street: string = 'Falsa';
+  street: string = 'Falsa 123';
   city: string = 'Gotham';
-  region: string = 'DC Region';
-  hideAdress: boolean = false;
-
-  // Methods
-  addressClick(){
-    this.hideAdress = !this.hideAdress;
-  }
-
-  regionChange(newRegion: string){
-    this.region = newRegion;
-  }
+  region: string = 'DC';
+  hideAdress: boolean = true;
 }
