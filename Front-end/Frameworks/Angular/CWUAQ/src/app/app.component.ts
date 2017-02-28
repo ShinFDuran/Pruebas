@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Customer } from './model';
+
 @Component({
   selector: 'my-app',  // directive <my-app>
   moduleId: module.id,
@@ -9,9 +11,15 @@ export class AppComponent  {
   // Properties
   pageTitle: string = 'Code Quickstart';
   pageDescription: string = 'Example web page using Angular Quickstart';
-  name: string = 'Batman'; 
-  street: string = 'Falsa 123';
-  city: string = 'Gotham';
-  region: string = 'DC';
   hideAdress: boolean = true;
+  customer: Customer = {
+    id: 1,
+    name: 'Batman',
+    address: {
+      street: 'Falsa 123',
+      city: 'Gotham',
+      state: 'Chicago',
+      region: 'West'
+    }
+  };
 }
