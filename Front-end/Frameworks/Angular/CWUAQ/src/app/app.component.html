@@ -1,15 +1,36 @@
-<h1>Hello {{name}}</h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Hello {{name}}<br>
+      <small [hidden]='hideAdress' >From {{ city }}, {{ region }}</small>
+    </h1>
+  </div>
 
-<!-- Example of bindings and event binding -->
-<fieldset>
-  <img [src]=image >
-</fieldset>
-<label [style.color]="color">Favorite Color</label>
-<button (click)="clicked()">Toggle Color</button>
+  <!-- Lesson 2: Exercise -->
+  <div class="row">
+    <button class="btn btn-default" (click)="addressClick()">Show/Hide Adress</button>
+    <select (change)="regionChange($event.target.value)">
+      <option>East</option>
+      <option>North</option>
+      <option>South</option>
+      <option>West</option>
+    </select>
+  </div>
 
-<!-- The target of the event change is the select element -->
-<select (change)="colorChange($event.target.value)">
-  <option>Red</option>
-  <option>Blue</option>
-  <option>Green</option>
-</select>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Example of bindings and event binding -->
+      <fieldset>
+        <img [src]=image >
+      </fieldset>
+      <label [style.color]="color">Favorite Color</label>
+      <button (click)="clicked()">Toggle Color</button>
+
+      <!-- The target of the event change is the select element -->
+      <select (change)="colorChange($event.target.value)">
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+      </select>
+    </div>
+  </div>
+</div>
