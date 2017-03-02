@@ -1,0 +1,25 @@
+<!-- Hero Form: Hidden if there is no hero selected  -->
+<div class="form-horizontal" *ngIf="hero">
+
+  <!-- Hero name -->
+  <div class="form-group">
+    <label for="inputName" class="col-sm-3 control-label">Name:</label>
+    <div class="col-sm-5">
+      <input class="form-control" id="inputName" [(ngModel)]='hero.name' >
+    </div>
+  </div>
+
+  <!-- Checkbox Show/Hide Address -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-5">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"  [(ngModel)]='showAdress'>Show Address
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address component -->
+  <address-comp [address]="hero.address" *ngIf='showAdress'></address-comp>
+</div>

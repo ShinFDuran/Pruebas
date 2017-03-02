@@ -1,0 +1,9 @@
+<!-- Hero List: By default no hero selected -->
+<!-- When we click a hero -> hero active and will show info -->
+<div class="row">
+  <div class="list-group col-sm-4 col-sm-offset-3">
+    <a class="list-group-item" *ngFor="let heroTmp of heroes"
+      (click)="changeHero(heroTmp)"
+      [ngClass]="{active: hero === heroTmp}">{{heroTmp.name}}</a>
+  </div>
+</div>

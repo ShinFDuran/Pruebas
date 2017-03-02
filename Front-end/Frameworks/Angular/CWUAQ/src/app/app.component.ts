@@ -12,9 +12,6 @@ export class AppComponent  {
   // Properties
   pageTitle: string = 'Hero Quickstart';
   pageDescription: string;
-  hideAdress: boolean;
-  regions: string[];
-  states: string[];
   heroes: Hero[];
   hero: Hero;
 
@@ -22,9 +19,6 @@ export class AppComponent  {
   constructor(){
     this.pageTitle = 'Hero Quickstart';
     this.pageDescription = 'Example web page using Angular Quickstart';
-    this.hideAdress = true;
-    this.regions = ['north', 'south', 'west', 'east'];
-    this.states = ['Chicago','New York','Alaska','Jalisco'];
     this.heroes = [{
       id: 1,
       name: 'Batman',
@@ -53,5 +47,10 @@ export class AppComponent  {
         region: 'north'
       }
     }];
+  }
+
+  // Methods
+  changeHero(heroTmp: Hero):void {
+    this.hero = heroTmp;
   }
 }
