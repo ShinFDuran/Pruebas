@@ -7,6 +7,7 @@ import { HeroListComponent } from './hero-list.component';
 import { HeroDetailsComponent } from './hero-details.component';
 import { AddressComponent } from './address.component';
 import { DataService } from './data.service';
+import { LoggerService } from './logger.service';
 
 @NgModule({
   // Modules that we need to import
@@ -21,7 +22,8 @@ import { DataService } from './data.service';
   bootstrap:    [ AppComponent ],
   // Services avaibles for the components
   providers: [
-    DataService
+    DataService,
+    LoggerService
   ]
 })
 
