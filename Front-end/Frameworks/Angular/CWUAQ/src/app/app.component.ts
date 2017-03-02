@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Hero } from './model';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'my-app',  // directive <my-app>
@@ -8,7 +9,7 @@ import { Hero } from './model';
   templateUrl: 'app.component.html'
 })
 
-export class AppComponent  { 
+export class AppComponent implements OnInit {
   // Properties
   pageTitle: string = 'Hero Quickstart';
   pageDescription: string;
@@ -16,37 +17,14 @@ export class AppComponent  {
   hero: Hero;
 
   // Constructor.  Properties initialization
-  constructor(){
+  // We need to get access to the service injecting it in the constructor
+  // We are using the TypeScript shorhand to declare it
+  // _heroes is avaible in all the component
+  constructor(private dataService: DataService){}
+  ngOnInit(){
     this.pageTitle = 'Hero Quickstart';
     this.pageDescription = 'Example web page using Angular Quickstart';
-    this.heroes = [{
-      id: 1,
-      name: 'Batman',
-      address: {
-        street: 'Wayne Manor',
-        city: 'Gotham',
-        state: 'Chicago',
-        region: 'west'
-      }
-    },{
-      id: 2,
-      name: 'Spiderman',
-      address: {
-        street: 'Daily Bugle',
-        city: 'New York',
-        state: 'New York',
-        region: 'east'
-      }
-    },{
-      id: 3,
-      name: 'Superman',
-      address: {
-        street: 'Daily Planet',
-        city: 'Metropolis',
-        state: 'Alaska',
-        region: 'north'
-      }
-    }];
+    this.heroes = this.dataService.getHeroes();
   }
 
   // Methods
