@@ -18,14 +18,7 @@ import { Heroe } from './app.heroe.model';
         <span class="badge">{{heroe.id}}</span> {{heroe.name}}
     </li>
   </ul>
-  <div *ngIf="heroeSeleccionado">
-    <h2>Detalles de {{heroeSeleccionado.name}}</h2>
-    <div><label>id: </label>{{heroeSeleccionado.id}}</div>
-    <div>
-      <label>Nombre: </label>
-      <input [(ngModel)]="heroeSeleccionado.name" placeholder="Nombre héroe">
-    </div>
-  </div>
+  <my-hero-detail [heroe]="heroeSeleccionado"></my-hero-detail>
   `,
   styleUrls: ['./app.component.css']
 })
