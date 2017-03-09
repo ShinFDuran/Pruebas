@@ -9,7 +9,16 @@ import { HEROES } from './mock-heroes';
 @Injectable()
 export class HeroService {
   // Este servicio devolverá inicialmente los héroes del archivo mock-heroes
-  getHeroes(): Heroe[] {
-    return HEROES;
+  // Lo adaptamos para que devuelva una promesa para carga asíncrona
+  getHeroes(): Promise<Heroe[]> {
+    return Promise.resolve(HEROES);
   }
+
+  // Simulación de una red con latencia
+  getHeroesSlowly(): Promise<Heroe[]> {
+    return new Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(this.getHeroes()), 2000);
+  });
+}
 }

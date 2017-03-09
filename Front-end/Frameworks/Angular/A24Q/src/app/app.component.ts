@@ -36,7 +36,9 @@ export class AppComponent  implements OnInit {
   // Métodos del ciclo de vida.  Inicialización de variables
   ngOnInit(): void {
     this.titulo = 'Tour de Héroes';
-    this.heroes = this.heroService.getHeroes();
+    // this.heroes = this.heroService.getHeroes(); // Carga síncrona
+    // Carga asíncrona con promesas
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
 
   // Métodos
