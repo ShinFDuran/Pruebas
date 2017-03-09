@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Imports de nuestra app
 import { Heroe } from './app.heroe.model';
+import { HeroService } from './hero.service';
 
 @Component({
   moduleId: module.id,
@@ -12,7 +13,7 @@ import { Heroe } from './app.heroe.model';
   <h2>Mis Héroes</h2>
   <ul class="heroes">
     <li
-      *ngFor="let heroe of HEROES"
+      *ngFor="let heroe of heroes"
       (click)="onSelect(heroe)"
       [class.selected]="heroe === heroeSeleccionado">
         <span class="badge">{{heroe.id}}</span> {{heroe.name}}
@@ -26,29 +27,20 @@ export class AppComponent  implements OnInit {
   // Propiedades
   titulo: string;
   heroeSeleccionado: Heroe;
+  heroes: Heroe[];
 
-  // Métodos del ciclo de vida
-  ngOnInit(){
+  // Para poder usar un servicio hay que inyectarlo en el constructor
+  constructor(private heroService: HeroService){
+  }
+
+  // Métodos del ciclo de vida.  Inicialización de variables
+  ngOnInit(): void {
     this.titulo = 'Tour de Héroes';
+    this.heroes = this.heroService.getHeroes();
   }
 
   // Métodos
   onSelect(heroe: Heroe): void {
     this.heroeSeleccionado = heroe;
   }
-
-  // Listado manual de Héroes
-  const HEROES: Hero[] = [
-      { id: 11, name: 'Mr. Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
-    ];
-
 }
