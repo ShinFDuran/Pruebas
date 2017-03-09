@@ -9,28 +9,39 @@ import { Heroe } from './app.heroe.model';
   selector: 'my-app',
   template: `
   <h1>{{titulo}}</h1>
-  <h2>Detalles de {{heroe.name}}</h2>
-  <div><label>id: </label>{{heroe.id}}</div>
-  <div>
-    <label>Nombre: </label>
-    <input [(ngModel)]="heroe.name" placeholder="Nombre héroe">
-  </div>
   <h2>Mis Héroes</h2>
   <ul class="heroes">
-    <li *ngFor="let heroe of HEROES">
-      <span class="badge">{{heroe.id}}</span> {{heroe.name}}
+    <li
+      *ngFor="let heroe of HEROES"
+      (click)="onSelect(heroe)"
+      [class.selected]="heroe === heroeSeleccionado">
+        <span class="badge">{{heroe.id}}</span> {{heroe.name}}
     </li>
   </ul>
+  <div *ngIf="heroeSeleccionado">
+    <h2>Detalles de {{heroeSeleccionado.name}}</h2>
+    <div><label>id: </label>{{heroeSeleccionado.id}}</div>
+    <div>
+      <label>Nombre: </label>
+      <input [(ngModel)]="heroeSeleccionado.name" placeholder="Nombre héroe">
+    </div>
+  </div>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit {
+  // Propiedades
   titulo: string;
-  heroe: Heroe;
+  heroeSeleccionado: Heroe;
 
+  // Métodos del ciclo de vida
   ngOnInit(){
     this.titulo = 'Tour de Héroes';
-    this.heroe = this.HEROES[0];
+  }
+
+  // Métodos
+  onSelect(heroe: Heroe): void {
+    this.heroeSeleccionado = heroe;
   }
 
   // Listado manual de Héroes
