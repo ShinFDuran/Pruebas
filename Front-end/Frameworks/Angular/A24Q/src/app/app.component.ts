@@ -6,7 +6,15 @@ import { Heroe } from './app.heroe.model';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>{{titulo}}</h1><h2>Detalles de {{heroe.name}} </h2>`,
+  template: `
+  <h1>{{titulo}}</h1>
+  <h2>Detalles de {{heroe.name}}</h2>
+  <div><label>id: </label>{{heroe.id}}</div>
+  <div>
+    <label>Nombre: </label>
+    <input [(ngModel)]="heroe.name" placeholder="Nombre héroe">
+  </div>
+  `,
 })
 export class AppComponent  implements OnInit {
   titulo: string;
