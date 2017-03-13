@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 // Necesitamos importar por un lado el modelo de Heroe
 import { Heroe } from './app.heroe.model';
-// Y por otro el array de heroes
-import { HEROES } from './mock-heroes';
 
 // Usamos @Injectable para generar un servicio
 @Injectable()
 export class HeroService {
-  // Este servicio devolverá inicialmente los héroes del archivo mock-heroes
-  // Lo adaptamos para que devuelva una promesa para carga asíncrona
+  private heroesUrl = 'api/heroes';  // URL to web api
+
+  constructor(private http: Http) { }
+
   getHeroes(): Promise<Heroe[]> {
-    return Promise.resolve(HEROES);
+    return this.http.get(this.heroesUrl)
+               .toPromise()
+               .then(response => response.json().data as Heroe[])
+               .catch(this.handleError);
   }
 
-  // Simulación de una red con latencia
-  getHeroesSlowly(): Promise<Heroe[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getHeroes()), 2000);
-    });
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 
   getHero(id: number): Promise<Heroe> {
