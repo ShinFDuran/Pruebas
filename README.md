@@ -15,3 +15,4 @@ La idea es hacer borrón y cuenta nueva, tengo mis dudas con respecto a usar el 
 - **A_CWUAQ** - Tutorial [Code with Us: Angular Quick Start](https://www.pluralsight.com/courses/code-with-us-angular-quick-start) de *PluralSight*
 - **A_A24Q** - Tutorial [Angular Quickstart v2.4 Oficial](https://angular.io/docs/ts/latest/guide/) de *Google*
 - **MR-todo** - Tutorial [Meteor Todo App with React](https://www.meteor.com/tutorials/react/creating-an-app) de *Meteor*
+- **MI-WApp** - Tutorial [WhatsApp Clone with Meteor and Ionic 2 CLI](https://angular-meteor.com/tutorials/whatsapp2/ionic/setup) de *Meteor*
