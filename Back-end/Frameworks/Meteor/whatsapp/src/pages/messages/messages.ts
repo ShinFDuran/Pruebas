@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs';
+import { MeteorObservable } from 'meteor-rxjs';
 
-import { Chat, Message } from 'api/models';
+import { Chat, Message, MessageType } from 'api/models';
 import { Messages } from 'api/collections';
 
 @Component({
@@ -14,6 +15,7 @@ export class MessagesPage implements OnInit {
   title: string;
   picture: string;
   messages: Observable<Message[]>;
+  message: string = '';
 
   constructor(navParams: NavParams) {
     this.selectedChat = <Chat>navParams.get('chat');
@@ -37,5 +39,27 @@ export class MessagesPage implements OnInit {
       return messages;
     });
 
+  }
+
+
+  onInputKeypress({ keyCode }: KeyboardEvent): void {
+    if (keyCode === 13) {
+      this.sendTextMessage();
+    }
+  }
+
+  sendTextMessage(): void {
+    // If message was yet to be typed, abort
+    if (!this.message) {
+      return;
+    }
+
+    MeteorObservable.call('addMessage', MessageType.TEXT,
+      this.selectedChat._id,
+      this.message
+    ).zone().subscribe(() => {
+      // Zero the input field
+      this.message = '';
+    });
   }
 }
