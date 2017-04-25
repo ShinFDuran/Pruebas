@@ -6,12 +6,13 @@ import { MomentModule } from 'angular2-moment';
 
 import { MyApp } from './app.component';
 import { ChatsPage } from './../pages/chats/chats';
-
+import { MessagesPage } from '../pages/messages/messages';
 
 @NgModule({
   declarations: [
     MyApp,
     ChatsPage,
+    MessagesPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -21,6 +22,7 @@ import { ChatsPage } from './../pages/chats/chats';
   entryComponents: [
     MyApp,
     ChatsPage,
+    MessagesPage,
   ],
   providers: [
     StatusBar,
