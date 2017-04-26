@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { VerificationPage } from '../pages/verification/verification';
 import { ChatsOptionsComponent } from '../pages/chats/chats-options';
+import { NewChatComponent } from '../pages/chats/new-chat';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ChatsOptionsComponent } from '../pages/chats/chats-options';
     VerificationPage,
     ProfilePage,
     ChatsOptionsComponent,
+    NewChatComponent,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -36,6 +38,7 @@ import { ChatsOptionsComponent } from '../pages/chats/chats-options';
     VerificationPage,
     ProfilePage,
     ChatsOptionsComponent,
+    NewChatComponent,
   ],
   providers: [
     StatusBar,
