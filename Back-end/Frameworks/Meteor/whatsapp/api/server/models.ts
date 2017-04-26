@@ -7,6 +7,7 @@ export interface Chat {
   title?: string;
   picture?: string;
   lastMessage?: Message;
+  memberIds?: string[];
 }
 
 export interface Message {
