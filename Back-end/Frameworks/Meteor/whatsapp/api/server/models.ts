@@ -1,5 +1,6 @@
 export enum MessageType {
-  TEXT = <any>'text'
+  TEXT = <any>'text',
+  LOCATION = <any>'location'
 }
 
 export interface Chat {

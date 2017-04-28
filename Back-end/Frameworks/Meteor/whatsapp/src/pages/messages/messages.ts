@@ -8,6 +8,7 @@ import { Subscription, Observable, Subscriber } from 'rxjs';
 import { Chat, Message, MessageType } from 'api/models';
 import { Messages } from 'api/collections';
 import { MessagesOptionsComponent } from './messages-options';
+import { MessagesAttachmentsComponent } from './messages-attachments';
 
 @Component({
   selector: 'messages-page',
@@ -212,5 +213,19 @@ export class MessagesPage implements OnInit, OnDestroy {
       // Zero the input field
       this.message = '';
     });
+  }
+
+  showAttachments(): void {
+    const popover = this.popoverCtrl.create(MessagesAttachmentsComponent, {
+      chat: this.selectedChat
+    }, {
+      cssClass: 'attachments-popover'
+    });
+
+    popover.onDidDismiss((params) => {
+      // TODO: Handle result
+    });
+    popover.present();
+
   }
 }
