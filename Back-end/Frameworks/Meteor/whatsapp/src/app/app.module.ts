@@ -16,6 +16,7 @@ import { ChatsOptionsComponent } from '../pages/chats/chats-options';
 import { NewChatComponent } from '../pages/chats/new-chat';
 import { MessagesOptionsComponent } from '../pages/messages/messages-options';
 import { MessagesAttachmentsComponent } from '../pages/messages/messages-attachments';
+import { NewLocationMessageComponent } from '../pages/messages/location-message';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MessagesAttachmentsComponent } from '../pages/messages/messages-attachm
     NewChatComponent,
     MessagesOptionsComponent,
     MessagesAttachmentsComponent,
+    NewLocationMessageComponent,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -49,6 +51,7 @@ import { MessagesAttachmentsComponent } from '../pages/messages/messages-attachm
     NewChatComponent,
     MessagesOptionsComponent,
     MessagesAttachmentsComponent,
+    NewLocationMessageComponent,
   ],
   providers: [
     StatusBar,

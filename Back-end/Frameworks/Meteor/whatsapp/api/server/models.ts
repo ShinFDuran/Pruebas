@@ -30,3 +30,9 @@ export interface Profile {
 export interface User extends Meteor.User {
   profile?: Profile;
 }
+
+export interface Location {
+  lat: number;
+  lng: number;
+  zoom: number;
+}

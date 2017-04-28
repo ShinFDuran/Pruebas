@@ -70,7 +70,7 @@ Meteor.methods({
     });
   },
    addMessage(type: MessageType, chatId: string, content: string) {
-     check(type, Match.OneOf(String, [ MessageType.TEXT ]));
+     check(type, Match.OneOf(String, [ MessageType.TEXT, MessageType.LOCATION ]));
      check(chatId, nonEmptyString);
      check(content, nonEmptyString);
 
